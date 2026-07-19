@@ -2,9 +2,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, react-hooks/set-state-in-effect, react-hooks/exhaustive-deps */
 
 import { useEffect, useMemo, useState } from "react";
+import { cisspQuestions } from "./cissp-bank";
 
 type Difficulty = "Fácil" | "Médio" | "Difícil";
-type Question = { id:string; statement:string; options:string[]; answer:number; subject:string; topic:string; difficulty:Difficulty };
+type Question = { id:string; statement:string; options:string[]; answer:number; subject:string; topic:string; difficulty:Difficulty; explanation?:string; certification?:string; examVersion?:string };
 type Attempt = { questionId:string; correct:boolean; answeredAt:string };
 type Mode = "all"|"count"|"range"|"wrong"|"unanswered"|"marked";
 type Config = { name:string; mode:Mode; count:number; from:number; to:number; subjects:string[]; difficulties:Difficulty[]; shuffleQuestions:boolean; shuffleOptions:boolean; excludeMastered:boolean; excludeToday:boolean; timed:boolean; minutes:number; feedback:"end"|"instant"; adaptive:boolean };
@@ -36,7 +37,7 @@ export default function StudySim(){
   const [dark,setDark]=useState(false);
   const [toast,setToast]=useState("");
   const [hydrated,setHydrated]=useState(false);
-  useEffect(()=>{try{const raw=localStorage.getItem("studysim-v3");if(raw){const s=JSON.parse(raw);setQuestions(s.questions||[]);setAttempts(s.attempts||[]);setMarked(s.marked||[]);setPresets(s.presets||BUILTIN);setDark(!!s.dark)}}catch{}setHydrated(true);if("serviceWorker" in navigator)navigator.serviceWorker.register(`${location.pathname.startsWith("/exame")?"/exame":""}/sw.js`)},[]);
+  useEffect(()=>{try{const raw=localStorage.getItem("studysim-v3");if(raw){const s=JSON.parse(raw);setQuestions(s.questions?.length?s.questions:cisspQuestions);setAttempts(s.attempts||[]);setMarked(s.marked||[]);setPresets(s.presets||BUILTIN);setDark(!!s.dark)}else setQuestions(cisspQuestions)}catch{setQuestions(cisspQuestions)}setHydrated(true);if("serviceWorker" in navigator)navigator.serviceWorker.register(`${location.pathname.startsWith("/exame")?"/exame":""}/sw.js`)},[]);
   useEffect(()=>{if(hydrated)localStorage.setItem("studysim-v3",JSON.stringify({questions,attempts,marked,presets,dark}))},[questions,attempts,marked,presets,dark,hydrated]);
   useEffect(()=>{if(!session.length||!config.timed||secondsLeft<=0)return;const timer=setInterval(()=>setSecondsLeft(v=>v-1),1000);return()=>clearInterval(timer)},[session,secondsLeft,config.timed]);
   useEffect(()=>{if(session.length&&config.timed&&secondsLeft===0)finish()},[secondsLeft]);
