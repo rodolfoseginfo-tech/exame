@@ -1,0 +1,18 @@
+{
+  "title": "Minha certificação",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "minha-prova-001",
+      "statement": "Qual alternativa representa a resposta correta desta questão de exemplo?",
+      "options": ["Alternativa incorreta A", "Alternativa correta B", "Alternativa incorreta C", "Alternativa incorreta D"],
+      "answer": 1,
+      "subject": "Domínio 1",
+      "topic": "Tópico de exemplo",
+      "difficulty": "Médio",
+      "explanation": "Explique aqui por que a alternativa indicada é a resposta correta.",
+      "certification": "Minha certificação",
+      "examVersion": "1.0"
+    }
+  ]
+}
