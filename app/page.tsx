@@ -37,7 +37,7 @@ export default function StudySim() {
     if (saved) { try { const v = JSON.parse(saved); setAnswers(v.answers || {}); setSets(v.sets || sets); } catch {} }
     const update = () => setOnline(navigator.onLine);
     update(); window.addEventListener("online", update); window.addEventListener("offline", update);
-    if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");
+    if ("serviceWorker" in navigator) navigator.serviceWorker.register(`${location.pathname.startsWith("/exame") ? "/exame" : ""}/sw.js`);
     return () => { window.removeEventListener("online", update); window.removeEventListener("offline", update); };
   }, []);
   useEffect(() => { localStorage.setItem("studysim-state", JSON.stringify({answers, sets})); }, [answers, sets]);
