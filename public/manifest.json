@@ -1,1 +1,25 @@
-{"name":"StudySim","short_name":"StudySim","description":"Aprenda, pratique e esteja pronto para a prova.","start_url":"./","scope":"./","display":"standalone","background_color":"#f7f7fb","theme_color":"#7166e8","lang":"pt-BR","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}],"shortcuts":[{"name":"Estudar agora","url":"./?action=study"},{"name":"Iniciar simulado","url":"./?action=exam"}]}
+{
+  "id": "./",
+  "name": "StudySim — Simulados de Certificação",
+  "short_name": "StudySim",
+  "description": "Simulados, revisão inteligente e evolução, inclusive offline.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#f7f7fb",
+  "theme_color": "#7166e8",
+  "lang": "pt-BR",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
+    {"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}
+  ],
+  "shortcuts": [
+    {"name": "Estudar agora", "short_name": "Estudar", "url": "./?action=study", "icons": [{"src": "icon-192.png", "sizes": "192x192"}]},
+    {"name": "Iniciar simulado", "short_name": "Simulado", "url": "./?action=exam", "icons": [{"src": "icon-192.png", "sizes": "192x192"}]}
+  ]
+}
