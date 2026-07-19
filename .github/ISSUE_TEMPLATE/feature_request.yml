@@ -1,0 +1,45 @@
+name: Solicitar implementação
+description: Envie uma melhoria para o Codex implementar no StudySim.
+title: "[Melhoria] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objetivo
+      description: Descreva o resultado que você deseja.
+      placeholder: Quero que o StudySim...
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Comportamento esperado
+      description: Explique como o usuário deve utilizar a funcionalidade.
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Regras e limites
+      value: |
+        - Manter no máximo três menus principais.
+        - Funcionar no desktop e celular.
+        - Preservar funcionalidades existentes.
+  - type: textarea
+    id: references
+    attributes:
+      label: Referências
+      description: Adicione imagens, links ou exemplos, se houver.
+  - type: checkboxes
+    id: delivery
+    attributes:
+      label: Entrega desejada
+      options:
+        - label: Implementar em uma branch `codex/`
+          required: true
+        - label: Executar lint e build
+          required: true
+        - label: Abrir Pull Request para minha aprovação
+          required: true
+
